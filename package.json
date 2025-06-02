@@ -1,0 +1,33 @@
+{
+  "name": "acai-bacana",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/AS-Gaspar/acai-bacana#readme",
+  "bugs": {
+    "url": "https://github.com/AS-Gaspar/acai-bacana/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AS-Gaspar/acai-bacana.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "knex": "^3.1.0",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "babel-loader": "^10.0.0",
+    "nodemon": "^3.1.10",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
+  }
+}
