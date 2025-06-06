@@ -8,7 +8,7 @@ exports.listarPedidos = async (req, res) => {
             const itens = await Item.getByPedidoId(pedido.id_pedido)
             return { ...pedido, itens }
         }))
-        res.status(200).json({ message: "Listar todos os pedidos", data: [] })
+        res.status(200).json({ message: "Listar todos os pedidos", data: pedidosComItens })
     } catch (error) {
         res.status(500).json({ message: "Erro ao listar pedidos", error: error.message})
     }
@@ -63,8 +63,19 @@ exports.atualizarPedido = async (req, res) => {
         const [pedidoAtualizado] = await Pedido.update(id, dadosPedido)
 
         if (!pedidoAtualizado){
-           return res.status() 
+           return res.status(404).json({ message: `Pedido com ID ${id} não encontrado para atualização`}) 
         }
+
+        await Item.delete(id)
+        let itensAtualizados = []
+        if (itens && itens.length > 0) {
+            const itensComIdPedido = itens.map(item => ({
+                ...item, 
+                id_pedido: pedidoAtualizado.id_pedido
+            }))
+            itensAtualizados = await Item.createMany(itensComIdPedido)
+        }
+
         res.status(200).json({ message: `Pedido com ID ${id} atualizado`, data: req.body });
     } catch (error) {
         res.status(500).json({ message: "Erro ao atualizar pedido", error: error.message });
