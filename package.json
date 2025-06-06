@@ -16,7 +16,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+
   },
   "dependencies": {
     "dotenv": "^16.5.0",
@@ -25,6 +27,7 @@
     "pg": "^8.16.0"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "@babel/core": "^7.27.4",
     "@babel/preset-env": "^7.27.2",
     "babel-loader": "^10.0.0",
