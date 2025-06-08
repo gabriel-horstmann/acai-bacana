@@ -1,0 +1,1 @@
+insert into pedidos (id_pedido, cliente, valor_pedido, status) values (1, 'Alex', 15.00, 'Entregue')

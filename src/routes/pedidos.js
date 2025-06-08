@@ -6,6 +6,6 @@ router.get('/', pedidoController.listarPedidos)
 router.post('/', pedidoController.criarPedido)
 router.get('/:id', pedidoController.buscarPedidoPorId)
 router.put('/:id', pedidoController.atualizarPedido)
-router.delete(':id', pedidoController.excluirPedido)
+router.delete('/:id', pedidoController.excluirPedido)
 
 module.exports = router
