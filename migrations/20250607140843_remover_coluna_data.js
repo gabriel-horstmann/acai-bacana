@@ -16,4 +16,4 @@ exports.down = function(knex) {
     return knex.schema.table('pedidos', function(table) {
         table.date('data').notNullable()
     }) 
-};
+}

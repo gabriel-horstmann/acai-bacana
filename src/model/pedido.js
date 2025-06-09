@@ -1,4 +1,5 @@
 const db = require('../database/db')
+const { v4: uuidv4 } = require('uuid')
 
 const Pedido = {
     getAll: () => {
@@ -9,16 +10,23 @@ const Pedido = {
         return db('pedidos').where({ id_pedido: id }).first()
     },
 
-    create: (pedido) => {
-        return db('pedidos').insert(pedido).returning('*')
+    create: (pedido, trx) => {
+        const queryBuilder = trx || db
+        const addIdPedidos = {
+            ...pedido,
+            id_pedido: pedido.id_pedido || uuidv4()
+        }
+        return queryBuilder('pedidos').insert(addIdPedidos).returning('*')
     },
 
-    update: (id, pedido) => {
-        return db('pedidos').where({ id_pedido: id }).update(pedido).returning('*')
+    update: (id, pedido, trx) => {
+        const queryBuilder = trx || db
+        return queryBuilder('pedidos').where({ id_pedido: id }).update(pedido).returning('*')
     },
 
     delete: (id) => {
-        return db('pedidos').where({ id_pedido: id }).del()
+        const queryBuilder = trx || db
+        return queryBuilder('pedidos').where({ id_pedido: id }).del()
     }
 }
 

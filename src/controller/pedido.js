@@ -1,5 +1,6 @@
 const Pedido = require("../model/pedido")
 const Item = require("../model/item")
+const db = require("../database/db")
 
 exports.listarPedidos = async (req, res) => {
   try {
@@ -21,6 +22,8 @@ exports.listarPedidos = async (req, res) => {
 }
 
 exports.criarPedido = async (req, res) => {
+  const trx = await db.transaction()
+
   try {
     const { itens, valor_pedido, ...dadosPedido } = req.body
 
@@ -45,14 +48,16 @@ exports.criarPedido = async (req, res) => {
       valor_pedido: valorPedido,
     }
 
-    const [novoPedido] = await Pedido.create(dadosPedidoParaCriar)
+    const [novoPedido] = await Pedido.create(dadosPedidoParaCriar, trx)
 
     if (novoPedido && novoPedido.id_pedido) {
       const itensComIdPedido = itens.map((item) => ({
         ...item,
         id_pedido: novoPedido.id_pedido,
       }))
-      const novosItens = await Item.createMany(itensComIdPedido)
+      const novosItens = await Item.createMany(itensComIdPedido, trx)
+
+      await trx.commit()
       res.status(201).json({
         message: "Pedido criado com sucesso",
         data: { ...novoPedido, itens: novosItens },
@@ -61,6 +66,8 @@ exports.criarPedido = async (req, res) => {
       throw new Error("Falha ao criar o pedido.")
     }
   } catch (error) {
+    await trx.rollback()
+
     if (error.message.includes("preço inválido")) {
       return res.status(400).json({ message: error.message })
     }
@@ -156,12 +163,10 @@ exports.atualizarPedido = async (req, res) => {
         })
       }
 
-      res
-        .status(200)
-        .json({
-          message: `Pedido com ID ${id} atualizado`,
-          data: { ...pedidoAtualizadoDoBanco, itens: itensProcessados },
-        })
+      res.status(200).json({
+        message: `Pedido com ID ${id} atualizado`,
+        data: { ...pedidoAtualizadoDoBanco, itens: itensProcessados },
+      })
     } else {
       res.status(200).json({
         message: `Nenhuma alteração nos dados principais do pedido com ID ${id}`,
