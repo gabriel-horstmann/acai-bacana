@@ -24,7 +24,7 @@ const Pedido = {
         return queryBuilder('pedidos').where({ id_pedido: id }).update(pedido).returning('*')
     },
 
-    delete: (id) => {
+    delete: (id, trx) => {
         const queryBuilder = trx || db
         return queryBuilder('pedidos').where({ id_pedido: id }).del()
     }
