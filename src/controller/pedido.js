@@ -184,6 +184,97 @@ exports.atualizarPedido = async (req, res) => {
   }
 }
 
+exports.atualizarItem = async (req, res) => {
+  const { id_pedido, id_item } = req.params
+  const { produto, preco_unit } = req.body
+
+  const trx = await db.transaction()
+
+  try {
+    let dadosAtualizarItem = {}
+
+    if (req.body.hasOwnProperty("produto")) {
+      if (typeof produto !== "string" || produto.trim() === "") {
+        await trx.rollback()
+        return res.status(400).json({ message: "Produto inválido." })
+      }
+      dadosAtualizarItem.produto = produto.trim()
+    }
+
+    if (req.body.hasOwnProperty("preco_unit")) {
+      const formatPrice = parseFloat(preco_unit)
+      if (isNaN(formatPrice) || formatPrice < 0) {
+        await trx.rollback()
+        return res.status(400).json({ message: "Preço inválido." })
+      }
+      dadosAtualizarItem.preco_unit = formatPrice
+    }
+
+    if (Object.keys(dadosAtualizarItem).length === 0) {
+      await trx.rollback()
+      res.status(400).json({ message: "Nenhum dado fornecido." })
+    }
+    const pedido = await Pedido.getById(id_pedido, trx)
+    if (!pedido) {
+      await trx.rollback()
+      return res.status(404).json({ message: "Pedido não foi encontrado" })
+    }
+
+    const item = await Item.getById(id_item, trx)
+    if (!item) {
+      await trx.rollback()
+      return res.status(404).json({ message: "Item não encontrado." })
+    }
+
+    const [itemAtualizado] = await Item.update(id_item, dadosAtualizarItem, trx)
+    if (!itemAtualizado) {
+      throw new Error("Falha ao atualizar o item.")
+    }
+
+    const itensPedido = await Item.getByPedidoId(id_pedido, trx)
+
+    let valorPedidoAtualizado = 15
+    for (const item of itensPedido) {
+      const itemPrecoUnit = parseFloat(item.preco_unit)
+      valorPedidoAtualizado += itemPrecoUnit
+    }
+
+    const [pedidoAtualizado] = await Pedido.update(
+      id_pedido,
+      { valor_pedido: valorPedidoAtualizado.toFixed(2) },
+      trx
+    )
+    if (!pedidoAtualizado) {
+      throw new Error("Falha ao atualizar valor do pedido.")
+    }
+
+    await trx.commit()
+    res
+      .status(200)
+      .json({
+        message: "Pedido atualizado com sucesso.",
+        data: { ...pedidoAtualizado, itens: itensPedido },
+      })
+  } catch (error) {
+    await trx.rollback()
+    console.error(
+      `Erro ao atualizar item ${id_item} do pedido ${id_pedido}:`,
+      error
+    )
+    if (
+      error.message.includes("inválido") ||
+      error.message.includes("inválida") ||
+      error.message.includes("não encontrado")
+    ) {
+      return res.status(400).json({ message: error.message })
+    }
+    res.status(500).json({
+      message: "Erro interno ao atualizar item do pedido.",
+      error: error.message,
+    })
+  }
+}
+
 exports.excluirPedido = async (req, res) => {
   try {
     const { id } = req.params
