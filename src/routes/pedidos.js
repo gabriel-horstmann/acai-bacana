@@ -3,6 +3,7 @@ const router = express.Router()
 const pedidoController = require('../controller/pedido.js')
 
 router.get('/', pedidoController.listarPedidos)
+router.get('/:id_pedido/itens', pedidoController.listarItensDePedido)
 router.post('/', pedidoController.criarPedido)
 router.get('/:id', pedidoController.buscarPedidoPorId)
 router.put('/:id', pedidoController.atualizarPedido)

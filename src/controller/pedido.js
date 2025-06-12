@@ -21,6 +21,30 @@ exports.listarPedidos = async (req, res) => {
   }
 }
 
+exports.listarItensDePedido = async (req, res) => {
+  const { id_pedido } = req.params
+  try {
+    const pedido = await Pedido.getById(id_pedido);
+    if (!pedido) {
+      return res.status(404).json({ message: `Pedido com ID ${id_pedido} não encontrado.` });
+    }
+    const itens = await Item.getByPedidoId(id_pedido)
+    if (!itens || itens.length === 0) {
+      return res.status(400).json({ message: `Nenhum item encontrado para o pedido ${id_pedido}.`, data: [] });
+    }
+    res.status(200).json({
+      message: `Itens do pedido ${id_pedido} listados com sucesso.`,
+      data: itens
+    })
+  } catch (error) {
+    console.error(`Erro ao listar itens do pedido ${id_pedido}:`, error)
+    res.status(500).json({
+      message: "Erro ao buscar itens do pedido.",
+      error: error.message,
+    })
+  }
+}
+
 exports.criarPedido = async (req, res) => {
   const trx = await db.transaction()
 
@@ -249,12 +273,10 @@ exports.atualizarItem = async (req, res) => {
     }
 
     await trx.commit()
-    res
-      .status(200)
-      .json({
-        message: "Pedido atualizado com sucesso.",
-        data: { ...pedidoAtualizado, itens: itensPedido },
-      })
+    res.status(200).json({
+      message: "Pedido atualizado com sucesso.",
+      data: { ...pedidoAtualizado, itens: itensPedido },
+    })
   } catch (error) {
     await trx.rollback()
     console.error(
