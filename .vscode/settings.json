@@ -9,5 +9,6 @@
       "database": "acaibacana",
       "username": "gaspar"
     }
-  ]
+  ],
+  "liveServer.settings.port": 3001
 }

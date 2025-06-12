@@ -6,8 +6,19 @@
     <meta name="keywords" content="Açai, comida, delivery">
     <title>Pedido</title>
 </head>
-<body>
-    
+<body onload="loadData()">
+ <h1>Pedidos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Status</th>
+                <th>Valor</th>
+            </tr>
+            <tbody id="pedidosTable">
+            </tbody>
+        </thead>
+    </table>
     <script src="../js/pedidos.js"></script>
 </body>
 </html>
