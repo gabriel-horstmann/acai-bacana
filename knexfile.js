@@ -11,11 +11,11 @@ module.exports = {
       port: Number(process.env.DB_PORT) || 5432,
     },
     migrations: {
-      directory: './migrations',
+      directory: './src/database/migrations',
       tableName: 'knex_migrations',
     },
     seeds: {
-      directory: './seeds',
+      directory: './src/database/seeds',
     },
   }
 }
