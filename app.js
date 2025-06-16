@@ -13,13 +13,8 @@ app.use(express.static(path.join(__dirname, "public")))
 const pedidosRoutes = require("./src/routes/pedidos")
 app.use("/api/pedidos", pedidosRoutes)
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, "public/views/index.html"))
-})
-
-app.get('/pedidos.html', (req, res) => {
-    res.sendFile(path.join(__dirname, "public/views/pedidos.html"))
-})
+const staticRoutes = require("./src/routes/static")
+app.use("/", staticRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server rodando em http://localhost:${PORT}`)

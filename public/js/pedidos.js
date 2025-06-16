@@ -7,19 +7,25 @@ async function loadData() {
         let tdCliente = document.createElement("td")
         let tdStatus = document.createElement("td")
         let tdValor = document.createElement("td")
-        let linkId = document.createElement("a") 
+        let tdAcoes = document.createElement("td")
+        let linkId = document.createElement("a")
+        
         tdCliente.innerHTML = object.cliente
         tdStatus.innerHTML = object.status
         tdValor.innerHTML = object.valor_pedido
-        linkId.href = object.id_pedido
-        linkId.textContent = 'Acessar pedido'
-        linkId.target = '_blank'
+
+        linkId.href = `itensPedido.html?id=${object.id_pedido}`
+        linkId.textContent = 'Ver itens' 
+
+        linkId.addEventListener('click', (e) => {
+            console.log('Link clicado:', linkId.href)
+        })
+
+        tdAcoes.appendChild(linkId)
         trPedido.appendChild(tdCliente)
         trPedido.appendChild(tdStatus)
         trPedido.appendChild(tdValor)
-        trPedido.appendChild(linkId)
+        trPedido.appendChild(tdAcoes)
         pedidosTable.appendChild(trPedido)
     })
 }
-
-
