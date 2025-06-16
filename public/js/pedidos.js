@@ -20,7 +20,7 @@ async function loadData() {
     linkVerItens.textContent = "Ver itens"
     linkVerItens.className = "btn-ver"
 
-    let btnEditar = document.createElement("a")
+    let btnEditar = document.createElement("button")
     btnEditar.textContent = "Editar"
     btnEditar.className = "btn-editar"
     btnEditar.onclick = () => editarPedido(object.id_pedido)
@@ -55,7 +55,6 @@ async function excluirPedido(id) {
 
     if (response.ok) {
       alert("Pedido excluído com sucesso.")
-      loadData()
     } else {
       const error = await response.json()
       alert(`Erro ao excluir o pedido: ${error.message}`)
