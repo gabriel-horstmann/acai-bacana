@@ -14,4 +14,8 @@ router.get('/itensPedido.html', (req, res) => {
     res.sendFile(path.join(__dirname, "../../public/views/itensPedido.html"))
 })
 
+router.get('/adicionarPedido.html', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../public/views/adicionarPedido.html'))
+})
+
 module.exports = router
