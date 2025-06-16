@@ -57,7 +57,7 @@ exports.criarPedido = async (req, res) => {
         .json({ message: "O pedido deve conter pelo menos um item." })
     }
 
-    let valorPedido = 0
+    let valorPedido = 15
     for (const item of itens) {
       const preco = parseFloat(item.preco_unit)
       if (isNaN(preco) || preco < 0) {
