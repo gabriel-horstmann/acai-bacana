@@ -145,7 +145,7 @@ exports.atualizarPedido = async (req, res) => {
         return res.status(400).json({ message: "Pedido não possui itens." })
       }
 
-      let valorPedido = 0
+      let valorPedido = 15
       for (const item of itens) {
         const preco = parseFloat(item.preco_unit)
         if (isNaN(preco) || preco < 0) {
