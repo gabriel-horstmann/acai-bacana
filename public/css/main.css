@@ -63,163 +63,64 @@
   height: auto;
 }
 
-/* Pedidos*/
-
-.pedidos {
-  height: 100vh;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  flex-flow: column nowrap;
-  gap: 3rem;
-  background-color: #46295a;
-  font-family: "Montserrat", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
-}
-
-.table-container {
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1rem;
-  overflow-x: auto;
-}
-
-.tablePedidos {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff1;
-  color: #dad4de;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.tablePedidos th, .tablePedidos td {
-  padding: 0.8rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid #6b547b;
-}
-
-.tablePedidos th {
-  background: #6b547b;
-  color: #fff;
-}
-
-.tablePedidos tr:last-child td {
-  border-bottom: none;
-}
-
-.tdAcoes {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-flow: row nowrap;
-}
-
-.btnVer {
-  text-decoration: none;
-  background-color: #46295a;
-  color: #dad4de;
-  padding: 0.5rem;
-  border-radius: 5px;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.btnVer:hover {
-  transform: scale(1.1);
-}
-
-.btnEditar {
-  border: none;
-  text-align: center;
-  color: #46295a;
-  background-color: #ffc107;
-  padding: 0.5rem;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px black;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.btnEditar:hover {
-  transform: scale(1.1);
-}
-
-.btnExcluir {
-  border: none;
-  color: #dad4de;
-  text-align: center;
-  background-color: #900C3F;
-  padding: 0.5rem;
-  border-radius: 5px;
-  box-shadow: 1px 1px 1px black;
-  transition: background 0.2s, transform 0.2s;
-}
-
-.btnExcluir :hover {
-  transform: scale(1.1);
-}
-
-@media (min-width: 1024px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 600px) {
-  .container-options {
-    flex-direction: column;
-    row-gap: 1.5rem;
-    column-gap: 0;
-  }
-  .options {
-    font-size: 2rem;
-    width: 90vw;
-    margin: 0.5rem 0;
-    padding: 0.8rem 0.2rem;
+  @media (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
   }
 
-  .table-container {
-    padding: 0.2rem;
+  @media (min-width: 768px) {
+    html {
+      font-size: 14px;
+    }
   }
 
-  .tablePedidos, .tablePedidos thead, .tablePedidos td, .tablePedidos tr {
-    display: block;
-    width: 100%;
-  }
+  @media (max-width: 600px) {
+    .container-options {
+      flex-direction: column;
+      row-gap: 1.5rem;
+      column-gap: 0;
+    }
+    .options {
+      font-size: 2rem;
+      width: 90vw;
+      margin: 0.5rem 0;
+      padding: 0.8rem 0.2rem;
+    }
 
-  .tablePedidos thead {
-    display: none;
-  }
+    .table-container {
+      padding: 0.2rem;
+    }
 
-  .tablePedidos tr {
-    margin-bottom: 1rem;
-    background: #6b547b;
-    border-radius: 10px;
-    padding: 0.5rem;
-  }
+    .tablePedidos, .tablePedidos thead, .tablePedidos td, .tablePedidos tr {
+      display: block;
+      width: 100%;
+    }
 
-  .tablePedidos td {
-    text-align: right;
-    padding-left: 50%;
-    position: relative;
-  }
+    .tablePedidos thead {
+      display: none;
+    }
 
-  .tablePedidos td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 1rem;
-    top: 0.8rem;
-    font-weight: bold;
-    text-align: left;
-    color: #fff;
+    .tablePedidos tr {
+      margin-bottom: 1rem;
+      background: #6b547b;
+      border-radius: 10px;
+      padding: 0.5rem;
+    }
+
+    .tablePedidos td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
+
+    .tablePedidos td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 1rem;
+      top: 0.8rem;
+      font-weight: bold;
+      text-align: left;
+      color: #fff;
+    }
   }
-}
