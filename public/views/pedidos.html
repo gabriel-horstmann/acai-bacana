@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="author" content="Alexandre Turrini Silvestri, Gabriel Alessandro Horstmann">
-    <meta name="keywords" content="Açai, comida, delivery">
-    <link rel="shortcut icon" href="../imgs/tigela_acai.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="author"
+      content="Alexandre Turrini Silvestri, Gabriel Alessandro Horstmann"
+    />
+    <meta name="keywords" content="Açai, comida, delivery" />
+    <link
+      rel="shortcut icon"
+      href="../imgs/tigela_acai.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
     <title>Pedido</title>
-</head>
-<body onload="loadData()">
- <h1>Pedidos</h1>
-    <table>
+  </head>
+  <body class="pedidos" onload="loadData()">
+    <h1 class="tittle">Pedidos</h1>
+    <div class="table-container">
+      <table class="tablePedidos">
         <thead>
-            <tr>
-                <th>Cliente</th>
-                <th>Status</th>
-                <th>Valor</th>
-                <th>Id Pedido</th>
-            </tr>
+          <tr class="tr">
+            <th>Cliente</th>
+            <th>Status</th>
+            <th>Valor</th>
+            <th>Id Pedido</th>
+          </tr>
         </thead>
-            <tbody id="pedidosTable">
-            </tbody>
-    </table>
+        <tbody id="pedidosTable"></tbody>
+      </table>
+    </div>
     <script src="../js/pedidos.js"></script>
-</body>
+  </body>
 </html>

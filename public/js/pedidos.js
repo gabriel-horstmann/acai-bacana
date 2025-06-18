@@ -15,19 +15,25 @@ async function loadData() {
     tdValor.innerHTML = object.valor_pedido
     tdId.innerHTML = object.id_pedido
 
+    tdAcoes.className = "tdAcoes"
+    tdCliente.className = "data-label"
+    tdStatus.className = "data-label"
+    tdValor.className = "data-label"
+    tdId.className = "data-label"
+
     let linkVerItens = document.createElement("a")
     linkVerItens.href = `itensPedido.html?id=${object.id_pedido}`
     linkVerItens.textContent = "Ver itens"
-    linkVerItens.className = "btn-ver"
+    linkVerItens.className = "btnVer"
 
     let btnEditar = document.createElement("button")
     btnEditar.textContent = "Editar"
-    btnEditar.className = "btn-editar"
+    btnEditar.className = "btnEditar"
     btnEditar.onclick = () => editarPedido(object.id_pedido)
 
     let btnExcluir = document.createElement("button")
     btnExcluir.textContent = "Excluir"
-    btnExcluir.className = "btn-excluir"
+    btnExcluir.className = "btnExcluir"
     btnExcluir.onclick = () => excluirPedido(object.id_pedido)
 
     tdAcoes.appendChild(linkVerItens)

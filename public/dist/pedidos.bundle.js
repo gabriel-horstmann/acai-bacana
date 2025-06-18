@@ -35,19 +35,24 @@ function _loadData() {
             tdStatus.innerHTML = object.status;
             tdValor.innerHTML = object.valor_pedido;
             tdId.innerHTML = object.id_pedido;
+            tdAcoes.className = "tdAcoes";
+            tdCliente.className = "data-label";
+            tdStatus.className = "data-label";
+            tdValor.className = "data-label";
+            tdId.className = "data-label";
             var linkVerItens = document.createElement("a");
             linkVerItens.href = "itensPedido.html?id=".concat(object.id_pedido);
             linkVerItens.textContent = "Ver itens";
-            linkVerItens.className = "btn-ver";
+            linkVerItens.className = "btnVer";
             var btnEditar = document.createElement("button");
             btnEditar.textContent = "Editar";
-            btnEditar.className = "btn-editar";
+            btnEditar.className = "btnEditar";
             btnEditar.onclick = function () {
               return editarPedido(object.id_pedido);
             };
             var btnExcluir = document.createElement("button");
             btnExcluir.textContent = "Excluir";
-            btnExcluir.className = "btn-excluir";
+            btnExcluir.className = "btnExcluir";
             btnExcluir.onclick = function () {
               return excluirPedido(object.id_pedido);
             };
