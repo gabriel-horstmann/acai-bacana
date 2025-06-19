@@ -24,10 +24,11 @@ async function loadData() {
     let btnVerItens = document.createElement("button")
     btnVerItens.textContent = "Ver itens"
     btnVerItens.className = "btnVer"
-    btnVerItens.onClick = async () => {
+    btnVerItens.onclick = async () => {
       const existingRow = document.getElementById(`itens-row-${object.id_pedido}`)
       if (existingRow) {
-        existingRow.remove()
+        existingRow.classList.remove('open')
+        setTimeout(() => existingRow.remove(), 500)
         return
       }
 
@@ -37,7 +38,9 @@ async function loadData() {
     const itensRow = document.createElement("tr")
     itensRow.id = `itens-row-${object.id_pedido}`
     const itensTd = document.createElement("td")
-    itensTd.colSpan = 4
+    itensTd.colSpan = 5
+    itensTd.className = "itensExpand"
+    itensTd.className = "tableItens"
 
     let html = "<table class='tablePedidos'><thead><tr><th>Produto</th><th>Valor</th></tr></thead><tbody>"
     data.data.forEach(item => {
@@ -48,6 +51,10 @@ async function loadData() {
     itensRow.appendChild(itensTd) 
 
     trPedido.parentNode.insertBefore(itensRow, trPedido.nextSibling)
+
+    setTimeout(() => {
+      itensTd.classList.add('open')
+    }, 10)
     }
 
     let btnEditar = document.createElement("button")

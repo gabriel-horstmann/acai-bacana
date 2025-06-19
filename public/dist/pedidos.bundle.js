@@ -43,7 +43,7 @@ function _loadData() {
             var btnVerItens = document.createElement("button");
             btnVerItens.textContent = "Ver itens";
             btnVerItens.className = "btnVer";
-            btnVerItens.onClick = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+            btnVerItens.onclick = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
               var existingRow, response, data, itensRow, itensTd, html;
               return _regenerator().w(function (_context) {
                 while (1) switch (_context.n) {
@@ -53,7 +53,10 @@ function _loadData() {
                       _context.n = 1;
                       break;
                     }
-                    existingRow.remove();
+                    existingRow.classList.remove('open');
+                    setTimeout(function () {
+                      return existingRow.remove();
+                    }, 500);
                     return _context.a(2);
                   case 1:
                     _context.n = 2;
@@ -67,7 +70,9 @@ function _loadData() {
                     itensRow = document.createElement("tr");
                     itensRow.id = "itens-row-".concat(object.id_pedido);
                     itensTd = document.createElement("td");
-                    itensTd.colSpan = 4;
+                    itensTd.colSpan = 5;
+                    itensTd.className = "itensExpand";
+                    itensTd.className = "tableItens";
                     html = "<table class='tablePedidos'><thead><tr><th>Produto</th><th>Valor</th></tr></thead><tbody>";
                     data.data.forEach(function (item) {
                       html += "<tr><td>".concat(item.produto, "</td><td>").concat(item.preco_unit, "</td></tr>");
@@ -76,6 +81,9 @@ function _loadData() {
                     itensTd.innerHTML = html;
                     itensRow.appendChild(itensTd);
                     trPedido.parentNode.insertBefore(itensRow, trPedido.nextSibling);
+                    setTimeout(function () {
+                      itensTd.classList.add('open');
+                    }, 10);
                   case 4:
                     return _context.a(2);
                 }

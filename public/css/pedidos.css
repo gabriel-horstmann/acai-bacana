@@ -20,9 +20,9 @@
 }
 
 .table-container {
+  align-self: center;
   width: 100%;
   max-width: 900px;
-  margin: 0 auto;
   padding: 1rem;
   overflow-x: auto;
 }
@@ -52,6 +52,31 @@
   border-bottom: none;
 }
 
+.tableItens {
+  width: 100%;
+  border-collapse: collapse;
+  color: #dad4de;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tableItens th, .tablePedidos td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #6b547b;
+}
+
+.tableItenss th {
+  background: #6b547b;
+  color: #fff;
+}
+
+.tableItens tr:last-child td {
+  border-bottom: none;
+}
+
+
 .tdAcoes {
   display: flex;
   justify-content: space-between;
@@ -70,6 +95,18 @@
 
 .btnVer:hover {
   transform: scale(1.1);
+}
+
+.itensExpand {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+.itensExpand.open {
+  max-height: 500px;
+  padding: 1rem 0;
 }
 
 .btnEditar {
@@ -100,4 +137,54 @@
 
 .btnExcluir:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 728px) {
+  .tdAcoes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-flow: row nowrap;
+  gap: 0.2rem;
+}
+
+.btnVer {
+  text-decoration: none;
+  background-color: #46295a;
+  color: #dad4de;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+.itensExpand {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.5;
+}
+
+.itensExpand.open {
+  max-height: 500px;
+  padding: 1rem 0;
+}
+
+.btnEditar {
+  border: none;
+  text-align: center;
+  color: #46295a;
+  background-color: #ffc107;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px black;
+}
+
+.btnExcluir {
+  border: none;
+  color: #dad4de;
+  text-align: center;
+  background-color: #900C3F;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px black;
+}
 }
