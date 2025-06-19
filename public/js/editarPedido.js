@@ -14,6 +14,7 @@ async function carregarPedido() {
   pedidoAtual = data.data
 
   document.getElementById("cliente").value = pedidoAtual.cliente
+  document.getElementById("pedido").value = pedidoAtual.pedido
   document.getElementById("status").value = pedidoAtual.status
 
   carregarItens(pedidoAtual.itens)
@@ -69,6 +70,7 @@ function coletarDadosFormulario() {
 
   return {
     cliente: document.getElementById('cliente').value,
+    pedido: document.getElementById('pedido').value,
     status: document.getElementById('status').value,
     itens: itens
   }

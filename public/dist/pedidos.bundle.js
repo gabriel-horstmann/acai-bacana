@@ -10,40 +10,77 @@ function loadData() {
   return _loadData.apply(this, arguments);
 }
 function _loadData() {
-  _loadData = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+  _loadData = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
     var pedidosTable, API, objects;
-    return _regenerator().w(function (_context) {
-      while (1) switch (_context.n) {
+    return _regenerator().w(function (_context2) {
+      while (1) switch (_context2.n) {
         case 0:
           pedidosTable = document.getElementById("pedidosTable");
-          _context.n = 1;
+          _context2.n = 1;
           return fetch("http://localhost:3000/api/pedidos");
         case 1:
-          API = _context.v;
-          _context.n = 2;
+          API = _context2.v;
+          _context2.n = 2;
           return API.json();
         case 2:
-          objects = _context.v;
+          objects = _context2.v;
           objects.data.forEach(function (object) {
             var trPedido = document.createElement("tr");
             var tdCliente = document.createElement("td");
+            var tdPedido = document.createElement("td");
             var tdStatus = document.createElement("td");
             var tdValor = document.createElement("td");
             var tdAcoes = document.createElement("td");
-            var tdId = document.createElement("td");
             tdCliente.innerHTML = object.cliente;
+            tdPedido.innerHTML = object.pedido;
             tdStatus.innerHTML = object.status;
             tdValor.innerHTML = object.valor_pedido;
-            tdId.innerHTML = object.id_pedido;
             tdAcoes.className = "tdAcoes";
             tdCliente.className = "data-label";
+            tdPedido.className = "data-label";
             tdStatus.className = "data-label";
             tdValor.className = "data-label";
-            tdId.className = "data-label";
-            var linkVerItens = document.createElement("a");
-            linkVerItens.href = "itensPedido.html?id=".concat(object.id_pedido);
-            linkVerItens.textContent = "Ver itens";
-            linkVerItens.className = "btnVer";
+            var btnVerItens = document.createElement("button");
+            btnVerItens.textContent = "Ver itens";
+            btnVerItens.className = "btnVer";
+            btnVerItens.onClick = /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+              var existingRow, response, data, itensRow, itensTd, html;
+              return _regenerator().w(function (_context) {
+                while (1) switch (_context.n) {
+                  case 0:
+                    existingRow = document.getElementById("itens-row-".concat(object.id_pedido));
+                    if (!existingRow) {
+                      _context.n = 1;
+                      break;
+                    }
+                    existingRow.remove();
+                    return _context.a(2);
+                  case 1:
+                    _context.n = 2;
+                    return fetch("http://localhost:3000/api/pedidos/".concat(object.id_pedido, "/itens"));
+                  case 2:
+                    response = _context.v;
+                    _context.n = 3;
+                    return response.json();
+                  case 3:
+                    data = _context.v;
+                    itensRow = document.createElement("tr");
+                    itensRow.id = "itens-row-".concat(object.id_pedido);
+                    itensTd = document.createElement("td");
+                    itensTd.colSpan = 4;
+                    html = "<table class='tablePedidos'><thead><tr><th>Produto</th><th>Valor</th></tr></thead><tbody>";
+                    data.data.forEach(function (item) {
+                      html += "<tr><td>".concat(item.produto, "</td><td>").concat(item.preco_unit, "</td></tr>");
+                    });
+                    html += "</tbody></table>";
+                    itensTd.innerHTML = html;
+                    itensRow.appendChild(itensTd);
+                    trPedido.parentNode.insertBefore(itensRow, trPedido.nextSibling);
+                  case 4:
+                    return _context.a(2);
+                }
+              }, _callee);
+            }));
             var btnEditar = document.createElement("button");
             btnEditar.textContent = "Editar";
             btnEditar.className = "btnEditar";
@@ -56,19 +93,20 @@ function _loadData() {
             btnExcluir.onclick = function () {
               return excluirPedido(object.id_pedido);
             };
-            tdAcoes.appendChild(linkVerItens);
+            tdAcoes.appendChild(btnVerItens);
             tdAcoes.appendChild(btnEditar);
             tdAcoes.appendChild(btnExcluir);
             trPedido.appendChild(tdCliente);
+            trPedido.appendChild(tdPedido);
             trPedido.appendChild(tdStatus);
             trPedido.appendChild(tdValor);
             trPedido.appendChild(tdAcoes);
             pedidosTable.appendChild(trPedido);
           });
         case 3:
-          return _context.a(2);
+          return _context2.a(2);
       }
-    }, _callee);
+    }, _callee2);
   }));
   return _loadData.apply(this, arguments);
 }
@@ -76,15 +114,15 @@ function editarPedido(_x) {
   return _editarPedido.apply(this, arguments);
 }
 function _editarPedido() {
-  _editarPedido = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2(id) {
-    return _regenerator().w(function (_context2) {
-      while (1) switch (_context2.n) {
+  _editarPedido = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(id) {
+    return _regenerator().w(function (_context3) {
+      while (1) switch (_context3.n) {
         case 0:
           window.location.href = "editarPedido.html?id=".concat(id);
         case 1:
-          return _context2.a(2);
+          return _context3.a(2);
       }
-    }, _callee2);
+    }, _callee3);
   }));
   return _editarPedido.apply(this, arguments);
 }
@@ -92,39 +130,39 @@ function excluirPedido(_x2) {
   return _excluirPedido.apply(this, arguments);
 }
 function _excluirPedido() {
-  _excluirPedido = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3(id) {
+  _excluirPedido = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4(id) {
     var response, error;
-    return _regenerator().w(function (_context3) {
-      while (1) switch (_context3.n) {
+    return _regenerator().w(function (_context4) {
+      while (1) switch (_context4.n) {
         case 0:
           console.log("teste");
           if (!confirm("Tem certeza que deseja excluir o pedido?")) {
-            _context3.n = 4;
+            _context4.n = 4;
             break;
           }
-          _context3.n = 1;
+          _context4.n = 1;
           return fetch("http://localhost:3000/api/pedidos/".concat(id), {
             method: "DELETE"
           });
         case 1:
-          response = _context3.v;
+          response = _context4.v;
           if (!response.ok) {
-            _context3.n = 2;
+            _context4.n = 2;
             break;
           }
           alert("Pedido excluído com sucesso.");
-          _context3.n = 4;
+          _context4.n = 4;
           break;
         case 2:
-          _context3.n = 3;
+          _context4.n = 3;
           return response.json();
         case 3:
-          error = _context3.v;
+          error = _context4.v;
           alert("Erro ao excluir o pedido: ".concat(error.message));
         case 4:
-          return _context3.a(2);
+          return _context4.a(2);
       }
-    }, _callee3);
+    }, _callee4);
   }));
   return _excluirPedido.apply(this, arguments);
 }
