@@ -16,13 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <input type="number" name="preco[]" step="0.01" min="0" required>
             </div>
 
-            <button type="button" class="remover-item">Remover</button>
+            <button type="button" class="remover-item btn-remover-item">Remover</button>
         `
 
         novoItem.querySelector('.remover-item').addEventListener('click', () => {
             novoItem.remove()
         })
-
         itensContainer.appendChild(novoItem)
     })
 

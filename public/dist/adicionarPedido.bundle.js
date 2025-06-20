@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var itensContainer = document.getElementById('itensContainer');
   adicionarItemBtn.addEventListener('click', function () {
     var novoItem = document.createElement('div');
-    novoItem.innerHTML = "\n            <div class=\"form-group\">\n                <label for=\"produto\">Produto:</label>\n                <input type=\"text\" name=\"produto[]\" maxlength=\"255\" required>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"preco\">Pre\xE7o:</label>\n                <input type=\"number\" name=\"preco[]\" step=\"0.01\" min=\"0\" required>\n            </div>\n\n            <button type=\"button\" class=\"remover-item\">Remover</button>\n        ";
+    novoItem.innerHTML = "\n            <div class=\"form-group\">\n                <label for=\"produto\">Produto:</label>\n                <input type=\"text\" name=\"produto[]\" maxlength=\"255\" required>\n            </div>\n\n            <div class=\"form-group\">\n                <label for=\"preco\">Pre\xE7o:</label>\n                <input type=\"number\" name=\"preco[]\" step=\"0.01\" min=\"0\" required>\n            </div>\n\n            <button type=\"button\" class=\"remover-item btn-remover-item\">Remover</button>\n        ";
     novoItem.querySelector('.remover-item').addEventListener('click', function () {
       novoItem.remove();
     });
