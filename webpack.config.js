@@ -4,8 +4,7 @@ module.exports = {
     entry: {
         pedidos: './public/js/pedidos.js',
         adicionarPedido: '/public/js/adicionarPedido.js',
-        editarPedido: '/public/js/editarPedido.js',
-        itensPedido: '/public/js/itensPedido.js'
+        editarPedido: '/public/js/editarPedido.js'
     },
     output: {
         path: path.resolve(__dirname, 'public/dist'),

@@ -8,67 +8,67 @@
       href="../imgs/tigela_acai.png"
       type="image/x-icon"
     />
+    <link rel="stylesheet" href="../css/adicionaritem.css">
     <title>Adicionar pedido</title>
-  </head>
-  <form id="pedidoForm">
-    <div class="form-section">
-      <h2>Informações do pedido</h2>
-      <div class="form-group">
-        <label for="cliente">Cliente:</label>
-        <input
-          type="text"
-          id="cliente"
-          name="cliente"
-          maxlength="255"
-          required
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="status">Status:</label>
-        <select name="status" id="status" required>
-          <option value="">Selecione o Status</option>
-          <option value="Pendente">Pendente</option>
-          <option value="Em Preparo">Em preparo</option>
-          <option value="Em Rota de Entrega">Em Rota de Entrega</option>
-          <option value="Entregue">Entregue</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        Descrição Pedido:
-        <textarea name="pedido" id="pedido" maxlength="255" required></textarea>
-      </div>
-    </div>
-
-    <div class="form-section">
-      <h2>Itens do Pedido</h2>
-      <div id="itensContainer">
-        <div class="item-form">
+    <body class="body">
+      </head>
+      <form id="pedidoForm" class="container">
+        <div class="form-section">
+          <h2 class="tittle">Informações do pedido</h2>
           <div class="form-group">
-            <label for="produto">Produto:</label>
-            <input type="text" name="produto[]" maxlength="255" required />
+            <label for="cliente">Cliente:</label>
+            <input
+              type="text"
+              id="cliente"
+              name="cliente"
+              maxlength="255"
+              required
+            />
           </div>
 
           <div class="form-group">
-            <label for="preco">Preço:</label>
-            <input type="number" name="preco[]" step="0.01" min="0" required />
+            <label for="status">Status:</label>
+            <select name="status" id="status" required>
+              <option value="">Selecione o Status</option>
+              <option value="Pendente">Pendente</option>
+              <option value="Em Preparo">Em preparo</option>
+              <option value="Em Rota de Entrega">Em Rota de Entrega</option>
+              <option value="Entregue">Entregue</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            Descrição Pedido:
+            <textarea name="pedido" id="pedido" maxlength="255" required></textarea>
           </div>
         </div>
-      </div>
 
-      <button type="button" id="adicionarItem">+ Adicionar Item</button>
-    </div>
+        <div class="form-section">
+          <h2 class="tittle">Itens do Pedido</h2>
+          <div id="itensContainer" class="itens-container">
+            <div class="item-form">
+              <div class="form-group">
+                <label for="produto">Produto:</label>
+                <input type="text" name="produto[]" maxlength="255" required />
+              </div>
 
-    <div class="form-actions">
-      <button type="submit">Salvar Pedido</button>
-      <button type="button" onclick="window.location.href='/pedidos.html'">
-        Cancelar
-      </button>
-    </div>
-  </form>
-  <body>
-    <h1></h1>
+              <div class="form-group">
+                <label for="preco">Preço:</label>
+                <input type="number" name="preco[]" step="0.01" min="0" required />
+              </div>
+            </div>
+          </div>
+
+          <button type="button" id="adicionarItem" class="btn-adicionar-item">Adicionar Item</button>
+        </div>
+
+        <div>
+          <button type="submit" class="btn btn-salvar">Salvar Pedido</button>
+          <button type="button" class="btn btn-cancelar" onclick="window.location.href='/pedidos.html'">
+            Cancelar
+          </button>
+        </div>
+      </form>
     <script src="../js/adicionarPedido.js"></script>
   </body>
 </html>

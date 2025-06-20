@@ -50,10 +50,30 @@ function carregarItens(item) {
     containerItens.appendChild(itemElement);
   });
 }
-function criarElementoItem(item, index) {
+function criarElementoItem(item) {
   var div = document.createElement("div");
   div.className = "item-row";
-  div.innerHTML = "\n        <input type=\"text\" placeholder=\"Nome do Produto\" value=\"".concat(item.produto, "\" required>\n        <input type=\"number\" placeholder=\"Pre\xE7o Unit\xE1rio\" value=\"").concat(item.preco_unit, "\" required step=\"0.01\" min=\"0\">\n        <button type=\"button\" class=\"btn-remover-item\" onclick=\"removerItem(this)\">Remover</button>\n    ");
+  var inputProduto = document.createElement("input");
+  inputProduto.type = "text";
+  inputProduto.placeholder = "Nome do Produto";
+  inputProduto.value = item.produto;
+  inputProduto.required = true;
+  var inputPreco = document.createElement("input");
+  inputPreco.type = "number";
+  inputPreco.value = item.preco_unit;
+  inputPreco.required = true;
+  inputPreco.step = "0.5";
+  inputPreco.min = "0.5";
+  var btnRemover = document.createElement("button");
+  btnRemover.type = "button";
+  btnRemover.className = "btn-remover-item";
+  btnRemover.textContent = "Remover";
+  btnRemover.onclick = function () {
+    removerItem(this);
+  };
+  div.appendChild(inputProduto);
+  div.appendChild(inputPreco);
+  div.appendChild(btnRemover);
   return div;
 }
 function removerItem(button) {
@@ -63,7 +83,7 @@ function removerItem(button) {
 function adicionarNovoItem() {
   var containerItens = document.getElementById("itensPedido");
   var novoItem = {
-    produto: '',
+    produto: "",
     preco_unit: 0
   };
   var itemElement = criarElementoItem(novoItem, containerItens.children.length);
@@ -73,16 +93,16 @@ function coletarDadosFormulario() {
   var itens = [];
   var itensElements = document.querySelectorAll(".item-row");
   itensElements.forEach(function (element) {
-    var inputs = element.querySelectorAll('input');
+    var inputs = element.querySelectorAll("input");
     itens.push({
       produto: inputs[0].value,
       preco_unit: parseFloat(inputs[1].value)
     });
   });
   return {
-    cliente: document.getElementById('cliente').value,
-    pedido: document.getElementById('pedido').value,
-    status: document.getElementById('status').value,
+    cliente: document.getElementById("cliente").value,
+    pedido: document.getElementById("pedido").value,
+    status: document.getElementById("status").value,
     itens: itens
   };
 }
@@ -99,9 +119,9 @@ function _salvarPedido() {
           dadosPedido = coletarDadosFormulario();
           _context2.n = 1;
           return fetch("http://localhost:3000/api/pedidos/".concat(pedidoId), {
-            method: 'PUT',
+            method: "PUT",
             headers: {
-              'Content-Type': 'application/json'
+              "Content-Type": "application/json"
             },
             body: JSON.stringify(dadosPedido)
           });
@@ -116,7 +136,7 @@ function _salvarPedido() {
   return _salvarPedido.apply(this, arguments);
 }
 function voltarParaLista() {
-  window.location.href = 'pedidos.html';
+  window.location.href = "pedidos.html";
 }
 /******/ })()
 ;

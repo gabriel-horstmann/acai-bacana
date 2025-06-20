@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/editarPedido.css">
     <title>Editar Pedido</title>
   </head>
-  <body onload="carregarPedido()">
+  <body class="body" onload="carregarPedido()">
     <div class="container">
-      <h1>Editar Pedido</h1>
+      <h1 class="tittle">Editar Pedido</h1>
 
       <form id="formPedido" onsubmit="salvarPedido(event)">
         <div class="form-group">
@@ -31,7 +32,7 @@
         </div>
 
         <div class="itens-container">
-            <h2>Itens de Pedido</h2>
+            <h2 class="tittle">Itens de Pedido</h2>
             <div id="itensPedido"></div>
             <button type="button" class="btn-adicionar-item" onclick="adicionarNovoItem()">
                 Adicionar Item
