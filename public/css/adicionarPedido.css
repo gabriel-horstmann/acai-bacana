@@ -52,8 +52,8 @@ input[type=number] {
 }
 
 .form-group input,
-.form-group select {
-    width: 100%;
+.form-group select,
+.form-group textarea {
     padding: 0.8rem;
     border: 1px solid #6b547b;
     border-radius: 5px;
@@ -61,6 +61,7 @@ input[type=number] {
     color: #dad4de;
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
+
 }
 
 .form-group input:focus,
@@ -73,6 +74,19 @@ input[type=number] {
 .form-group select option {
     background-color: #46295a;
     color: #dad4de;
+}
+
+.form-group select {
+    width: 100%;
+}
+
+.form-group input {
+    width: 96.5%;
+}
+
+.form-group textarea {
+    min-height: 80px;
+    width: 96.5%;
 }
 
 .itens-container {
