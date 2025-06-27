@@ -5,68 +5,88 @@
     <meta name="author" content="Alexandre Turrini Silvestri, Gabriel Alessandro Horstmann">
     <meta name="keywords" content="Açai, comida, delivery">
     <title>Açai Bacana Site</title>
+    <link rel="stylesheet" href="../css/main.css"> 
 </head>
 
 <body>
-    <header>
-        <div class="title-hd">
-            <h1>Açai</h1>
-            <h1>Bacana</h1>
+
+    <header> 
+        <div class="top-container">
+            <button class="button-add">Adicionar Pedido</button>
+                <div class="logo">
+                <span>Açai</span>
+                <span>Bacana</span>
+                </div>
+            <button class="button-remove">Remover Pedido</button>
         </div>
-
-        <div class="hd-button">Adicionar Pedido</div>
-
-        <div class="hd-button">Remover Pedido</div>
     </header>
 
-    <div class="main-set"> Número do Pedido
-        <div class="shortest-set">1</div>
-        <div class="shortest-set">2</div>
-        <div class="shortest-set">3</div>
-        <div class="shortest-set">4</div>
-        <div class="shortest-set">5</div>
+<div class="principal-container">
+    <div class="list-column">
+        <div class="frame-content">Número do Pedido</div>
+        <div class="frame-content">Data do Pedido</div>
+        <div class="frame-content">Cliente</div>
+        <div class="frame-content">Pedido</div>
+        <div class="frame-content">Status</div>
     </div>
 
-    <div class="main-set"> Data do Pedido
-        <div class="normal-set">01/01/2000</div>
-        <div class="normal-set">01/01/2000</div>
-        <div class="normal-set">01/01/2000</div>
-        <div class="normal-set">01/01/2000</div>
-        <div class="normal-set">01/01/2000</div>
-    </div>
+    <div class="content-list">
+        <div class="list-column">
+            <div class="frame-content">1</div>
+            <div class="frame-content">01/01/2000</div>
+            <div class="frame-content">João da Silva</div>
+                <div class="order-detail">
+                    <div class="frame-content">Açaí 300ML</div>
+                    <div class="order-view">Ver Pedido</div>
+                </div>
+            <div class="frame-content">Em Rota de Entrega</div>
+        </div>
 
-    <div class="main-set"> Cliente
-        <div class="normal-set">João Da Silva</div>
-        <div class="normal-set">João Da Silva</div>
-        <div class="normal-set">João Da Silva</div>
-        <div class="normal-set">João Da Silva</div>
-        <div class="normal-set">João Da Silva</div>
-    </div>
+        <div class="list-column">
+            <div class="frame-content">2</div>
+            <div class="frame-content">01/01/2000</div>
+            <div class="frame-content">João da Silva</div>
+                <div class="order-detail">
+                    <div class="frame-content">Mega Açaí 300ML</div>
+                    <div class="order-view">Ver Pedido</div>
+                </div>
+            <div class="frame-content">Em Rota de Entrega</div>
+        </div>
 
-    <div class="main-set"> Pedido
-        <div class="normal-set">Açai 300ML</div>
-        <div class="to-go-order"><a href="#">Ver Pedido</a></div>
-        
-        <div class="normal-set">Mega Açai 300ML</div>
-        <div class="to-go-order"><a href="#">Ver Pedido</a></div>
-        
-        <div class="normal-set">Super Açai 250ML</div>
-        <div class="to-go-order"><a href="#">Ver Pedido</a></div>
-        
-        <div class="normal-set">Açai 500ML</div>
-        <div class="to-go-order"><a href="#">Ver Pedido</a></div>
-        
-        <div class="normal-set">Lite Açai 250ML</div>
-        <div class="to-go-order"><a href="#">Ver Pedido</a></div>
-    </div>
+        <div class="list-column">
+            <div class="frame-content">3</div>
+            <div class="frame-content">01/01/2000</div>
+            <div class="frame-content">João da Silva</div>
+                <div class="order-detail">
+                    <div class="frame-content">Super Açaí 250ML</div>
+                    <div class="order-view">Ver Pedido</div>
+                </div>
+            <div class="frame-content">Pronto</div>
+        </div>
 
-    <div class="main-set"> Status
-        <div class="normal-set">Em rota de entrega</div>
-        <div class="normal-set">Em rota de entrega</div>
-        <div class="normal-set">Pronto</div>
-        <div class="normal-set">Preparando</div>
-        <div class="normal-set">Preparando</div>
+        <div class="list-column">
+            <div class="frame-content">4</div>
+            <div class="frame-content">01/01/2000</div>
+            <div class="frame-content">João da Silva</div>
+                <div class="order-detail">
+                    <div class="frame-content">Açaí 500ML</div>
+                    <div class="order-view">Ver Pedido</div>
+                </div>
+            <div class="frame-content">Preparando</div>
+        </div>
+
+        <div class="list-column">
+            <div class="frame-content">5</div>
+            <div class="frame-content">01/01/2000</div>
+            <div class="frame-content">João da Silva</div>
+                <div class="order-detail">
+                    <div class="frame-content">Lite Açaí 250ML</div>
+                    <div class="order-view">Ver Pedido</div>
+                </div>
+            <div class="frame-content">Preparando</div>
+        </div>
     </div>
+</div>
 
     <footer>
         <p>&copy; 2025 Açai Bacana. Todos os direitos reservados.</p>
