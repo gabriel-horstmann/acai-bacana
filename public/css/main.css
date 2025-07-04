@@ -1,155 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+  margin: 0;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #1c1c1c;
-    font-family: Arial, sans-serif;
-    color: white;
-    text-transform: uppercase;
+.inicio {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  gap: 3rem;
+  background-color: #46295a;
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: bold;
+  font-style: normal;
+}
+
+.tittle {
+  font-size: 5rem;
+  margin-top: 1rem;
+  text-align: center;
+  color: #dad4de;
+}
+
+.link {
+  text-decoration: none;
+  color: #dad4de;
+}
+
+.container-options {
+  display: flex;
+  justify-content: center;
+  column-gap: 3rem;
+  align-items: center;
+  flex-flow: row nowrap;
+}
+
+.options {
+  display: inline-block;
+  background-color: #6b547b;
+  color: #ffff;
+  text-align: center;
+  font-size: 3rem;
+  border-radius: 20px;
+  padding: 0.6rem;
+  margin: 0 2rem 0 2rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.options:hover {
+  background-color: #8a6fa1;
+  transform: scale(1.1);
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+}
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .container-options {
+      flex-direction: column;
+      row-gap: 1.5rem;
+      column-gap: 0;
+    }
+    .options {
+      font-size: 2rem;
+      width: 90vw;
+      margin: 0.5rem 0;
+      padding: 0.8rem 0.2rem;
     }
 
-.top-container{
-    background-color: #4b0fa0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 30px;
-    height: 6vh;
+    .table-container {
+      padding: 0.2rem;
     }
 
-.button-add,
-.button-remove{
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
+    .tablePedidos, .tablePedidos thead, .tablePedidos td, .tablePedidos tr {
+      display: block;
+      width: 100%;
     }
 
-.button-add{
-    background-color: #0094ff;
-    color: white;
-    text-transform: uppercase;
-}
+    .tablePedidos thead {
+      display: none;
+    }
 
-.button-remove{
-    background-color: #ff5733;
-    color: white;
-    text-transform: uppercase;
-}
+    .tablePedidos tr {
+      margin-bottom: 1rem;
+      background: #6b547b;
+      border-radius: 10px;
+      padding: 0.5rem;
+    }
 
-.logo{
-    text-align: center;
-    font-size: 30px;
-    font-weight: bold;
-}
+    .tablePedidos td {
+      text-align: right;
+      padding-left: 50%;
+      position: relative;
+    }
 
-.logo span{
-    display: block;
-}
-
-#main-container{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    gap: 10px;
-}
-
-#content-list{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.list-column{
-    display: flex;
-    justify-content: space-between;
-}
-
-.frame-content{
-    color: black;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    width: 200px;
-    font-size: 12px;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 28px;
-}
-
-.header-rows{
-    color: black;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    width: 200px;
-    font-size: 12px;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 28px;
-}
-
-.order-detail{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
-
-.order-view{
-    background-color: #00d364;
-    color: white;
-    font-size: 13px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-weight: bold;
-    width: 140px;
-    text-align: center;
-    cursor: pointer;
-}
-
-p{  
-    margin-top: 40px;
-    text-align: center;
-}
-
-input{
-    color: black;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    width: 200px;
-    font-size: 12px;
-    text-align: center;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 28px;
-    text-transform: uppercase;
-    border: 0;
-}
-
-input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-a{
-    text-decoration: none;
-    color: white;
-}
-
-a:visited{
-    text-decoration: none;
-    color:white;
-}
+    .tablePedidos td::before {
+      content: attr(data-label);
+      position: absolute;
+      left: 1rem;
+      top: 0.8rem;
+      font-weight: bold;
+      text-align: left;
+      color: #fff;
+    }
+  }

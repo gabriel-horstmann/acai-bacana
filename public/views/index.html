@@ -1,101 +1,18 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="Alexandre Turrini Silvestri, Gabriel Alessandro Horstmann">
-    <meta name="keywords" content="Açai, comida, delivery">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../imgs/tigela_acai.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/main.css">
     <title>Açai Bacana Site</title>
-    <link rel="stylesheet" href="../css/main.css"> 
 </head>
-
-<body onload="loadData()">
-
-    <header> 
-        <div class="top-container">
-            <button class="button-add">Adicionar Pedido</button>
-                <div class="logo">
-                <span>Açai</span>
-                <span>Bacana</span>
-                </div>
-            <button class="button-remove">Remover Pedido</button>
-        </div>
-    </header>
-
-<div id="main-container">
-    <div class="list-column">
-        <div class="header-rows">Número do Pedido</div>
-        <div class="header-rows">Data do Pedido</div>
-        <div class="header-rows">Cliente</div>
-        <div class="header-rows">Pedido</div>
-        <div class="header-rows">Valor</div>
-        <div class="header-rows">Status</div>
-        
+<body class="inicio">
+    <h1 class="tittle"><a class="link" href="/">Açai Bacana</a></h1>
+    <div class="container-options">
+        <h2 class="options"><a class="link " href="/pedidos.html">Acessar Pedidos</a></h2>
+        <h2 class="options"><a class="link" href="/adicionarPedido.html">Registrar Pedido</a></h2>
     </div>
-
-    <div id="content-list">
-        <div class="list-column">
-            <div class="frame-content"></div>
-            <div class="frame-content"></div>
-            <div class="frame-content"></div>
-                <div class="order-detail">
-                    <div class="frame-content">Açaí 300ML</div>
-                    <div class="order-view">Ver Pedido</div>
-                </div>
-            <div class="frame-content">Em Rota de Entrega</div>
-            <div class="frame-content">Em Rota de Entrega</div>
-        </div>
-
-        <div class="list-column">
-            <div class="frame-content"><input type="number" name="order-number" placeholder="insira o número do pedido"></div>
-            <div class="frame-content"><input type="date" name="order-date" max="2026-12-31"></div>
-            <div class="frame-content"><input type="text" name="client-order" placeholder="digite o nome do cliente"></div>
-                <div class="order-detail">
-                    <div class="frame-content">Mega Açaí 300ML</div>
-                    <div class="order-view">Ver Pedido</div>
-                </div>
-            <div class="frame-content">Em Rota de Entrega</div>
-        </div>
-
-        <div class="list-column">
-           <div class="frame-content"><input type="number" name="order-number" placeholder="insira o número do pedido"></div>
-            <div class="frame-content"><input type="date" name="order-date" max="2026-12-31"></div>
-            <div class="frame-content"><input type="text" name="client-order" placeholder="digite o nome do cliente"></div>
-                <div class="order-detail">
-                    <div class="frame-content">Super Açaí 250ML</div>
-                    <div class="order-view"><a href="pedido.html">Ver Pedido</a></div>
-                </div>
-            <div class="frame-content">Pronto</div>
-        </div>
-
-        <div class="list-column">
-            <div class="frame-content"><input type="number" name="order-number" placeholder="insira o número do pedido"></div>
-            <div class="frame-content"><input type="date" name="order-date" max="2026-12-31"></div>
-            <div class="frame-content"><input type="text" name="client-order" placeholder="digite o nome do cliente"></div>
-                <div class="order-detail">
-                    <div class="frame-content">Açaí 500ML</div>
-                    <div class="order-view">Ver Pedido</div>
-                </div>
-            <div class="frame-content">Preparando</div>
-        </div>
-
-        <div class="list-column">
-            <div class="frame-content"><input type="number" name="order-number" placeholder="insira o número do pedido"></div>
-            <div class="frame-content"><input type="date" name="order-date" max="2026-12-31"></div>
-            <div class="frame-content"><input type="text" name="client-order" placeholder="digite o nome do cliente"></div>
-                <div class="order-detail">
-                    <div class="frame-content">Lite Açaí 250ML</div>
-                    <div class="order-view">Ver Pedido</div>
-                </div>
-            <div class="frame-content">Preparando</div>
-        </div>
-    </div>
-</div>
-
-    <footer>
-        <p>&copy; 2025 Açai Bacana. Todos os direitos reservados.</p>
-    </footer>
-
-    <script src="../js/main.js"></script>
+    <img class="img" src="../imgs/açai_principal.png" alt="Imagem de Copos de Açai">
 </body>
-
 </html>
